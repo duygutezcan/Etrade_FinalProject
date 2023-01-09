@@ -1,0 +1,71 @@
+﻿@model Etrade.UI.Models.OrdersModel
+
+@{
+    ViewData["Title"] = "Orders";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row col-md-12">
+
+    <div>
+            <h4>Sipariş Bilgileri</h4>
+            <hr />
+
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="form-group">
+                <label asp-for="Orders.Mail" class="control-label"></label>
+                <input asp-for="Orders.Mail" value="@ViewBag.mail" class="form-control" />
+                <span asp-validation-for="Orders.Mail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.Avenue" class="control-label">Semt</label>
+                <input asp-for="Orders.Avenue" value="@ViewBag.avenue" class="form-control" />
+                <span asp-validation-for="Orders.Avenue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input  asp-for="Orders.Id" type="hidden" class="form-control" />
+                <span asp-validation-for="Orders.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.Street" class="control-label">Cadde</label>
+                <input asp-for="Orders.Street" value="@ViewBag.street" class="form-control" />
+                <span asp-validation-for="Orders.Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">İlçe seçiniz:</label>
+                <select asp-for="Orders.CountyId" class="form-control" name="Orders.CountyId">
+                    @foreach (var item in Model.Counties)
+                    {
+                        <option value="@item.Id">@item.Description</option>
+                    }
+
+                </select>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Orders.No" class="control-label"></label>
+                <input asp-for="Orders.No" value="@ViewBag.no" class="form-control" />
+                <span asp-validation-for="Orders.No" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input  asp-for="Orders.UsersId" type="hidden" class="form-control" />
+                <span asp-validation-for="Orders.UsersId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+    <div>
+        <a href="/User/Index">Anasayfaya Dön</a>
+    </div>
+</div>
+
+
+

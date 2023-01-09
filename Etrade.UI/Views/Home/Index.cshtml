@@ -1,0 +1,11 @@
+﻿@using Etrade.UI.Models;
+@model IEnumerable<ProductModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="container pb-5">
+    @Html.Partial("_ProductList", Model)
+</div>

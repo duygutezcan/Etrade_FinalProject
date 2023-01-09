@@ -1,0 +1,39 @@
+﻿@using Etrade.UI.Models;
+@model IEnumerable<ProductModel>
+@{
+    var selectedCategory = Url.ActionContext.RouteData.Values["id"];
+}
+
+<ul class="list-group">
+
+    <a href="/Home/List" class="list-group-item">
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        Tüm Kategoriler
+    </a>
+    <a href="/Home/List/1" class="list-group-item">
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        Kamera
+    </a>
+    <a href="/Home/List/2" class="list-group-item">
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        Bilgisayar
+    </a>
+    <a href="/Home/List/3" class="list-group-item">
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        Televizyon
+    </a>
+    <a href="/Home/List/4" class="list-group-item">
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        Ses ve Görüntü
+    </a>
+    <a href="/Home/List/5" class="list-group-item">
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        Tablet
+    </a>
+    <a href="/Home/List/6" class="list-group-item">
+        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        Telefon
+    </a>
+
+
+</ul>

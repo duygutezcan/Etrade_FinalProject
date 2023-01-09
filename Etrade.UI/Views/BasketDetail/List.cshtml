@@ -1,0 +1,61 @@
+﻿@model Etrade.UI.Models.BasketDetailModel
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="container col-md-12">
+
+    <h1>Sepet</h1>
+<div class="row">
+    
+
+        <div>
+            <table class="table table-hover">
+                <tr>
+                    <th>Ürün Adı</th>
+                    <th>Miktar</th>
+                    <th>Birim Fiyat</th>
+                    <th>Toplam Fiyat</th>
+                    <th></th>
+                </tr>            
+                @foreach (var item in Model.basketDetailDTO)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Amount Adet</td>
+                        <td>@item.UnitPrice ₺</td>
+                        <td>@item.Total ₺</td>
+                        <td><a class="btn btn-danger" href="/BasketDetail/Delete/@item.Id/?id2=@item.ProductId">Sil</a></td>
+                    </tr>
+                }
+            </table>
+          
+        </div>
+        @if(Model.basketDetailDTO.Count() != 0){
+        <div>
+        <h6>Sepetinizde @Model.basketDetailDTO.Sum(x=>x.Amount) Adet Ürün Bulunmaktadır.</h6>
+        <h6>Toplam Tutar: @Model.basketDetailDTO.Sum(x=>x.Total) ₺</h6>
+        </div>
+    <div class="text-center">
+        <a href="/User/List" class="btn btn-primary">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            Alışverişe Devam Et
+        </a>
+        <a href="/BasketDetail/Orders" class="btn btn-success">
+            <i class="fa fa-check" aria-hidden="true"></i>
+            Alışverişi Tamamla
+        </a>
+    </div>
+
+
+        }
+        else{
+            <div class="alert alert-warning" role="alert">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                Alışveriş Sepetinizde Ürün Bulunmamaktadır.
+            </div>
+        }
+    </div>
+</div>

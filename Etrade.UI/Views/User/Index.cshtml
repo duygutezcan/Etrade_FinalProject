@@ -1,0 +1,49 @@
+﻿@using Etrade.UI.Models;
+@model IEnumerable<ProductModel>
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="container pb-5">
+
+    <div class="row">
+
+    @foreach (var urun in Model)
+    {
+
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                    <img class="card-img-top" href="/User/Details/@urun.Id" src="@urun.imgUrl" alt="@urun.Name">
+                    <div class="card-body">
+                    <h4 class="card-title" >
+                            <a href="/User/Details/@urun.Id" style="text-decoration: none"> @urun.Name</a>
+                    </h4>
+                    <p class="card-text pt-2 description">
+                        @urun.Description
+                    </p>
+                </div>
+                <div class="card-footer">
+
+                    <small class="text-muted product-price">
+                        <i class="fa fa-try" aria-hidden="true"></i>
+                        @urun.Price
+                    </small>
+                    <a href="/User/Details/@urun.Id" class="btn btn-default btn-sm float-right">
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        <i class="bi bi-arrow-right-square-fill"></i>
+                        Ürünü incele
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+</div>
+

@@ -1,0 +1,105 @@
+﻿@using Etrade.UI.Models;
+@model IEnumerable<ProductModel>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="container pb-5">
+
+    <div class="row">
+    
+        <div class="col-md-3">
+            <ul class="list-group">
+
+                <a href="/User/List" class="list-group-item">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    Tüm Kategoriler
+                </a>
+                <a href="/User/List/1" class="list-group-item">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    Kamera
+                </a>
+                <a href="/User/List/2" class="list-group-item">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    Bilgisayar
+                </a>
+                <a href="/User/List/3" class="list-group-item">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    Televizyon
+                </a>
+                <a href="/User/List/4" class="list-group-item">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    Ses ve Görüntü
+                </a>
+                <a href="/User/List/5" class="list-group-item">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    Tablet
+                </a>
+                <a href="/User/List/6" class="list-group-item">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    Telefon
+                </a>
+
+
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+
+            @if (Model.Count() == 0)
+            {
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    Bu kategoride bir ürün bulunamadı.
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                    <strong>@Model.Count() adet</strong> ürün bulundu.
+                </div>
+            }
+            <div class="row">
+
+                @foreach (var urun in Model)
+                {
+
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img class="card-img-top" href="/User/Details/@urun.Id" src="@urun.imgUrl" alt="@urun.Name">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="/User/Details/@urun.Id" style="text-decoration: none"> @urun.Name</a>
+                                </h4>
+                                <p class="card-text pt-2 description">
+                                    @urun.Description
+                                </p>
+                            </div>
+                            <div class="card-footer">
+
+                                <small class="text-muted product-price">
+                                    <i class="fa fa-try" aria-hidden="true"></i>
+                                    @urun.Price
+                                </small>
+                                <a href="/User/Details/@urun.Id" class="btn btn-default btn-sm float-right">
+                                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                    <i class="bi bi-arrow-right-square-fill"></i>
+                                    Ürünü incele
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+           
+        </div>
+       
+    </div>
+
+</div>
+
+
